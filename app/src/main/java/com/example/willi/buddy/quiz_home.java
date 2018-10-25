@@ -20,6 +20,9 @@ public class quiz_home extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
+                case R.id.navigation_Home:
+                    startActivity(new Intent(quiz_home.this, MainActivity.class));
+                    return true;
                 case R.id.navigation_Quiz:
                     return true;
                 case R.id.navigation_todo:
@@ -41,6 +44,7 @@ public class quiz_home extends AppCompatActivity {
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.setSelectedItemId(R.id.navigation_Quiz);
 
         //Button on click listener
         c1.setOnClickListener(new View.OnClickListener() {

@@ -2,12 +2,14 @@ package com.example.willi.buddy;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.Image;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,10 +20,10 @@ public class quiz_start extends AppCompatActivity {
 
     private TextView ques;
     private Button OptA, OptB, OptC, OptD;
+    private ImageButton btn_end;
     private List<Question> questionList;
     private int questionCounter, questioncountTotal;
     private Question currentQuestion;
-    //private boolean answered;
     private ProgressBar mProgressbar = null;
     QuizDbHelper dbHelper;
 
@@ -35,6 +37,7 @@ public class quiz_start extends AppCompatActivity {
         OptB = findViewById(R.id.btnOptB);
         OptC = findViewById(R.id.btnOptC);
         OptD = findViewById(R.id.btnOptD);
+        btn_end = findViewById(R.id.btn_quizend);
         mProgressbar = findViewById(R.id.progressBarCounter);
 
         //getting Intent from Quiz_Home
@@ -88,6 +91,12 @@ public class quiz_start extends AppCompatActivity {
                 int answer = 4;
                 checkanswer(answer);
 
+            }
+        });
+        btn_end.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
             }
         });
     }

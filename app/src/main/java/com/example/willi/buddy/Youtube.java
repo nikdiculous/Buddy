@@ -37,6 +37,9 @@ public class Youtube extends YouTubeBaseActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
+                case R.id.navigation_Home:
+                    startActivity(new Intent(Youtube.this, MainActivity.class));
+                    return true;
                 case R.id.navigation_Quiz:
                     startActivity(new Intent(Youtube.this, quiz_home.class));
                     return true;
@@ -60,6 +63,7 @@ public class Youtube extends YouTubeBaseActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.getMenu().getItem(0).setCheckable(false);
         navigation.getMenu().getItem(1).setCheckable(false);
+        navigation.getMenu().getItem(2).setCheckable(false);
 
         final YouTubePlayerView youTubePlayerView = findViewById(R.id.YTplayer);
         Intent intent = getIntent();

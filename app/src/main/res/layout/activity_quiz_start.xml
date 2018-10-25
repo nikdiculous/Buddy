@@ -21,6 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="140dp"
             android:layout_margin="10dp"
+            android:autoSizeTextType="uniform"
             android:textAlignment="center"
             android:textColor="#393737"
             android:textSize="28sp" />
@@ -100,4 +101,11 @@
             android:layout_margin="5dp"
             android:textSize="15dp" />
     </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btn_quizend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/ic_end" />
 </RelativeLayout>

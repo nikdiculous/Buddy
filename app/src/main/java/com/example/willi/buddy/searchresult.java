@@ -58,6 +58,9 @@ public class searchresult extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
+                case R.id.navigation_Home:
+                    startActivity(new Intent(searchresult.this, MainActivity.class));
+                    return true;
                 case R.id.navigation_Quiz:
                     startActivity(new Intent(searchresult.this, quiz_home.class));
                     return true;
@@ -82,6 +85,7 @@ public class searchresult extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.getMenu().getItem(0).setCheckable(false);
         navigation.getMenu().getItem(1).setCheckable(false);
+        navigation.getMenu().getItem(2).setCheckable(false);
 
         //getting intent of user search from MainActivity page
         Intent intent = getIntent();
@@ -120,7 +124,9 @@ public class searchresult extends AppCompatActivity {
         // TODO replace with your value
         String cx = "012867466185715520127:yihffaevwng";
 
-        String urlString = "https://www.googleapis.com/customsearch/v1?q=" + message + "&key=" + key + "&cx=" + cx + "&alt=json";
+        String urlString = "https://www.googleapis.com/customsearch/v1?key=" + key + "&cx=" + cx + "&fields=items(title,link)"+"&q="+ message;
+
+        //String urlString = "https://www.googleapis.com/customsearch/v1?q=" + message + "&key=" + key + "&cx=" + cx + "&alt=json";
         URL url = null;
         try {
             url = new URL(urlString);
@@ -217,6 +223,7 @@ public class searchresult extends AppCompatActivity {
             // hide progressbar
             mProgressBar2.setVisibility(View.GONE);
             pharsing(result);
+            Log.d(TAG, "JSONResult is: " + result);
 
         }
     }
@@ -228,13 +235,15 @@ public class searchresult extends AppCompatActivity {
                 JSONObject jSONObject = new JSONObject(result);
                 // Getting JSON Array node
                 JSONArray itemsArray = jSONObject.getJSONArray("items");
+                Log.d(TAG, "ItemArray is " + itemsArray.toString());
                 for (int i = 0; i < itemsArray.length(); i++) {
-                    int j =0;
+                    //int j =0;
+
                     String url = itemsArray.getJSONObject(i).getString("link");
                     Log.d(TAG, "pharsing URL: " + url);
                     listUrl[i] = url;
 
-                    String title = itemsArray.getJSONObject(i).getJSONObject("pagemap").getJSONArray("question").getJSONObject(0).getString("name");
+                    String title = itemsArray.getJSONObject(i).getString("title");
                     Log.d(TAG, "pharsing: Title " + title);
                     listTitle[i] = title;
 

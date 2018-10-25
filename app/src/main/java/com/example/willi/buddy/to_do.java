@@ -33,11 +33,13 @@ public class to_do extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
+                case R.id.navigation_Home:
+                    startActivity(new Intent(to_do.this, MainActivity.class));
+                    return true;
                 case R.id.navigation_Quiz:
                     startActivity(new Intent(to_do.this, quiz_home.class));
                     return true;
                 case R.id.navigation_todo:
-                    //mTextMessage.setText(R.string.title_Todo);
                     return true;
             }
             return false;
