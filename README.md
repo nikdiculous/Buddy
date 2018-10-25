@@ -1,6 +1,7 @@
 # Buddy(FINAL)
 (INFS3634 Assignment)(Group 51)
 Welcome to Buddy, This app allows you to learn Java.
+
 Functionality
 1. Custom Google Search API - allow user to search StackOverFlow.com for any question, result will be displayed in Listview and user can view the content in their device browser
 2. Quiz - allow user to start a quiz based on different topic. wrong attempt will be added to their To-Do List
